@@ -1,0 +1,16 @@
+<odoo>
+    <!-- CEO Approval Group -->
+    <record id="group_ceo_approval" model="res.groups">
+        <field name="name">CEO Approval</field>
+    </record>
+
+    <!-- Sales Manager Approval Group -->
+    <record id="group_manager_approval" model="res.groups">
+        <field name="name">Sales Manager Approval</field>
+    </record>
+
+    <!-- Salesperson Submit Group -->
+    <record id="group_salesperson_submit" model="res.groups">
+        <field name="name">Salesperson Submit</field>
+    </record>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sale_order_form_custom_approval" model="ir.ui.view">
+        <field name="name">sale.order.form.custom.approval</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Add buttons next to header -->
+            <xpath expr="//header" position="inside">
+
+                <!-- 1️⃣ Submit for Approval (Salesperson only) -->
+                <button
+                    name="action_submit_for_approval"
+                    type="object"
+                    string="Submit for Approval"
+                    class="btn btn-secondary"
+                    groups="sales_team.group_sale_salesman"
+                    modifiers="{'invisible': [['approval_state', '!=', 'draft']]}"
+                />
+
+                <!-- 2️⃣ Manager Approve (Sales Manager only) -->
+                <button
+                    name="action_manager_approve"
+                    type="object"
+                    string="Manager Approve"
+                    class="btn btn-primary"
+                    groups="sales_team.group_sale_manager"
+                    modifiers="{'invisible': [['|', ['approval_state', '!=', 'waiting_manager'], ['manager_approved', '=', True]]]}"
+                />
+
+                <!-- 3️⃣ CEO Approve (CEO only) -->
+                <button
+                    name="action_ceo_approve"
+                    type="object"
+                    string="CEO Approve"
+                    class="btn btn-danger"
+                    groups="custom_approval_sale.group_ceo_approval"
+                    modifiers="{'invisible': [['|', ['approval_state', '!=', 'waiting_ceo'], ['ceo_approved', '=', True]]]}"
+                />
+
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
