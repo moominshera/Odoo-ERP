@@ -1,0 +1,29 @@
+<odoo>
+    <record id="crm_lead_form_procurement_acquire" model="ir.ui.view">
+        <field name="name">crm.lead.form.procurement.acquire</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Place button BEFORE chatter, not inside it -->
+            <xpath expr="//sheet" position="inside">
+
+                <div class="oe_button_box" name="procurement_task_box">
+                    <button
+                        name="action_acquire_procurement_task"
+                        type="object"
+                        string="Acquire Procurement Task"
+                        class="btn-primary"
+                    />
+                </div>
+
+                <div>
+                    <strong>Procurement Task Acquired By:</strong>
+                    <field name="procurement_task_acquired_by" readonly="1"/>
+                </div>
+
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
