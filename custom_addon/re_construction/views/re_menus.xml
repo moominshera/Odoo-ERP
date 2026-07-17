@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_re_root" name="Real Estate" sequence="15"/>
+
+    <menuitem id="menu_re_land" name="Land Parcels" parent="menu_re_root"
+              action="action_re_land" sequence="10"/>
+
+    <menuitem id="menu_re_building" name="Buildings" parent="menu_re_root"
+              action="action_re_building" sequence="20"/>
+
+    <menuitem id="menu_re_floor" name="Floors" parent="menu_re_root"
+              action="action_re_floor" sequence="30"/>
+
+    <menuitem id="menu_re_unit" name="Units" parent="menu_re_root"
+              action="action_re_unit" sequence="40"/>
+
+    <menuitem id="menu_re_payment_plan" name="Payment Plans" parent="menu_re_root"
+              action="action_re_payment_plan" sequence="50"/>
+
+</odoo>

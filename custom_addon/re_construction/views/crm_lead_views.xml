@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_crm_lead_form_inherit_re" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.re</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_open_sale_order" type="object"
+                        string="Sale Order" class="oe_stat_button" icon="fa-file-text-o"
+                        invisible="not sale_order_id"/>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="action_confirm_booking" type="object"
+                        string="Confirm Booking" class="oe_highlight"
+                        invisible="not unit_id"/>
+                <button name="action_mark_won_create_so" type="object"
+                        string="Create Sale Order" class="oe_highlight"
+                        invisible="not stage_id or sale_order_id"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Property Booking" name="property_booking">
+                    <group>
+                        <group string="Selected Property">
+                            <field name="building_id"/>
+                            <field name="floor_id"/>
+                            <field name="unit_id"/>
+                            <field name="land_id" readonly="1"/>
+                            <field name="selling_price"/>
+                            <field name="payment_plan_id"/>
+                        </group>
+                        <group string="Booking Info">
+                            <field name="booking_date"/>
+                            <field name="expected_construction_start_date"/>
+                            <field name="down_payment_status"/>
+                            <field name="buyer_type"/>
+                        </group>
+                    </group>
+                    <group string="Finance Buyer Details" invisible="buyer_type != 'finance'">
+                        <group>
+                            <field name="bank_id"/>
+                            <field name="loan_amount"/>
+                            <field name="finance_reference"/>
+                        </group>
+                        <group>
+                            <field name="finance_status"/>
+                            <field name="approval_status"/>
+                            <field name="approval_date"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

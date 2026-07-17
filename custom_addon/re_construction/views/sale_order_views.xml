@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form_inherit_re" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.re</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_confirm_down_payment" type="object"
+                        string="Confirm Down Payment" class="oe_highlight"
+                        invisible="down_payment_status == 'received'"
+                        groups="account.group_account_invoice"/>
+            </xpath>
+            <xpath expr="//page[@name='other_information']" position="after">
+                <page string="Property &amp; Buyer" name="property_buyer">
+                    <group>
+                        <group string="Property">
+                            <field name="land_id" readonly="1"/>
+                            <field name="building_id"/>
+                            <field name="floor_id"/>
+                            <field name="unit_id"/>
+                            <field name="project_id" readonly="1"/>
+                        </group>
+                        <group string="Plan &amp; Dates">
+                            <field name="payment_plan_id"/>
+                            <field name="booking_date"/>
+                            <field name="expected_construction_start_date"/>
+                            <field name="down_payment_status"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Buyer Type">
+                            <field name="buyer_type"/>
+                        </group>
+                        <group string="Finance Details" invisible="buyer_type != 'finance'">
+                            <field name="bank_id"/>
+                            <field name="loan_amount"/>
+                            <field name="finance_status"/>
+                            <field name="approval_status"/>
+                            <field name="finance_reference"/>
+                            <field name="approval_date"/>
+                        </group>
+                    </group>
+                    <field name="milestone_ids">
+                        <list editable="bottom" create="0">
+                            <field name="name"/>
+                            <field name="construction_stage"/>
+                            <field name="payment_percentage"/>
+                            <field name="payment_amount"/>
+                            <field name="is_reached" readonly="1"/>
+                            <button name="action_mark_reached" type="object"
+                                    string="Mark Reached" invisible="is_reached"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

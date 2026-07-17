@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_re_land_list" model="ir.ui.view">
+        <field name="name">re.land.list</field>
+        <field name="model">re.land</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="city"/>
+                <field name="area"/>
+                <field name="building_count"/>
+                <field name="unit_count"/>
+                <field name="available_unit_count"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_re_land_form" model="ir.ui.view">
+        <field name="name">re.land.form</field>
+        <field name="model">re.land</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_create_purchase_order" type="object"
+                            string="Create Acquisition PO" class="oe_highlight"
+                            invisible="purchase_order_id"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(action_re_building)d" type="action"
+                                class="oe_stat_button" icon="fa-building"
+                                context="{'default_land_id': id}">
+                            <field name="building_count" widget="statinfo" string="Buildings"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. North Riyadh Plot 106"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code" readonly="1"/>
+                            <field name="land_owner_id"/>
+                            <field name="address"/>
+                            <field name="city"/>
+                            <field name="area"/>
+                        </group>
+                        <group>
+                            <field name="purchase_order_id" readonly="1"/>
+                            <field name="acquisition_cost" readonly="1"/>
+                            <field name="analytic_account_id" readonly="1"/>
+                            <field name="unit_count"/>
+                            <field name="available_unit_count"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Buildings">
+                            <field name="building_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="construction_stage"/>
+                                    <field name="total_units"/>
+                                    <field name="available_units"/>
+                                    <field name="sold_units"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_re_land" model="ir.actions.act_window">
+        <field name="name">Land Parcels</field>
+        <field name="res_model">re.land</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_re_land" model="ir.sequence">
+            <field name="name">Land Parcel</field>
+            <field name="code">re.land</field>
+            <field name="prefix">LAND-</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

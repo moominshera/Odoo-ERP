@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="demo_payment_plan_standard" model="re.payment.plan">
+        <field name="name">Standard Construction Plan</field>
+    </record>
+
+    <record id="demo_plan_line_booking" model="re.payment.plan.line">
+        <field name="plan_id" ref="demo_payment_plan_standard"/>
+        <field name="sequence">10</field>
+        <field name="construction_stage">booking</field>
+        <field name="percentage">20</field>
+    </record>
+    <record id="demo_plan_line_10" model="re.payment.plan.line">
+        <field name="plan_id" ref="demo_payment_plan_standard"/>
+        <field name="sequence">20</field>
+        <field name="construction_stage">10</field>
+        <field name="percentage">20</field>
+    </record>
+    <record id="demo_plan_line_45" model="re.payment.plan.line">
+        <field name="plan_id" ref="demo_payment_plan_standard"/>
+        <field name="sequence">30</field>
+        <field name="construction_stage">45</field>
+        <field name="percentage">20</field>
+    </record>
+    <record id="demo_plan_line_65" model="re.payment.plan.line">
+        <field name="plan_id" ref="demo_payment_plan_standard"/>
+        <field name="sequence">40</field>
+        <field name="construction_stage">65</field>
+        <field name="percentage">20</field>
+    </record>
+    <record id="demo_plan_line_85" model="re.payment.plan.line">
+        <field name="plan_id" ref="demo_payment_plan_standard"/>
+        <field name="sequence">50</field>
+        <field name="construction_stage">85</field>
+        <field name="percentage">10</field>
+    </record>
+    <record id="demo_plan_line_95" model="re.payment.plan.line">
+        <field name="plan_id" ref="demo_payment_plan_standard"/>
+        <field name="sequence">60</field>
+        <field name="construction_stage">95</field>
+        <field name="percentage">5</field>
+    </record>
+    <record id="demo_plan_line_100" model="re.payment.plan.line">
+        <field name="plan_id" ref="demo_payment_plan_standard"/>
+        <field name="sequence">70</field>
+        <field name="construction_stage">100</field>
+        <field name="percentage">5</field>
+    </record>
+
+    <record id="demo_land_1" model="re.land">
+        <field name="name">North Riyadh Plot 106</field>
+        <field name="address">King Fahd Road</field>
+        <field name="city">Riyadh</field>
+        <field name="area">5000</field>
+    </record>
+
+    <record id="demo_building_1" model="re.building">
+        <field name="name">Building A</field>
+        <field name="land_id" ref="demo_land_1"/>
+    </record>
+
+    <record id="demo_floor_1" model="re.floor">
+        <field name="name">Floor 1</field>
+        <field name="building_id" ref="demo_building_1"/>
+        <field name="sequence">10</field>
+    </record>
+    <record id="demo_floor_2" model="re.floor">
+        <field name="name">Floor 2</field>
+        <field name="building_id" ref="demo_building_1"/>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="demo_unit_101" model="re.unit">
+        <field name="name">101</field>
+        <field name="floor_id" ref="demo_floor_1"/>
+        <field name="property_type">apartment</field>
+        <field name="area">120</field>
+        <field name="selling_price">450000</field>
+    </record>
+    <record id="demo_unit_102" model="re.unit">
+        <field name="name">102</field>
+        <field name="floor_id" ref="demo_floor_1"/>
+        <field name="property_type">apartment</field>
+        <field name="area">135</field>
+        <field name="selling_price">495000</field>
+    </record>
+    <record id="demo_unit_201" model="re.unit">
+        <field name="name">201</field>
+        <field name="floor_id" ref="demo_floor_2"/>
+        <field name="property_type">apartment</field>
+        <field name="area">120</field>
+        <field name="selling_price">460000</field>
+    </record>
+
+</odoo>

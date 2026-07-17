@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_re_land_user,re.land.user,model_re_land,base.group_user,1,1,1,0
+access_re_building_user,re.building.user,model_re_building,base.group_user,1,1,1,0
+access_re_floor_user,re.floor.user,model_re_floor,base.group_user,1,1,1,0
+access_re_unit_user,re.unit.user,model_re_unit,base.group_user,1,1,1,0
+access_re_payment_plan_user,re.payment.plan.user,model_re_payment_plan,base.group_user,1,1,1,0
+access_re_payment_plan_line_user,re.payment.plan.line.user,model_re_payment_plan_line,base.group_user,1,1,1,0
+access_re_land_manager,re.land.manager,model_re_land,sales_team.group_sale_manager,1,1,1,1
+access_re_building_manager,re.building.manager,model_re_building,sales_team.group_sale_manager,1,1,1,1
+access_re_floor_manager,re.floor.manager,model_re_floor,sales_team.group_sale_manager,1,1,1,1
+access_re_unit_manager,re.unit.manager,model_re_unit,sales_team.group_sale_manager,1,1,1,1
